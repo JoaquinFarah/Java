@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="RelacionesEj1">
+  <ClassDiagramComponents>
+    <Class name="Ej1Perro" package="entidad" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="raza" type="Raza" visibility="private"/>
+        <Field name="edad" type="Integer" visibility="private"/>
+        <Field name="tamanio" type="Tamanio" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="String" name="nombre"/>
+          <Argument type="Raza" name="raza"/>
+          <Argument type="Integer" name="edad"/>
+          <Argument type="Tamanio" name="tamanio"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="setNombre" returnType="void" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="getRaza" returnType="Raza" visibility="public"/>
+        <Method name="setRaza" returnType="void" visibility="public">
+          <Argument type="Raza" name="raza"/>
+        </Method>
+        <Method name="getEdad" returnType="Integer" visibility="public"/>
+        <Method name="setEdad" returnType="void" visibility="public">
+          <Argument type="Integer" name="edad"/>
+        </Method>
+        <Method name="getTamanio" returnType="Tamanio" visibility="public"/>
+        <Method name="setTamanio" returnType="void" visibility="public">
+          <Argument type="Tamanio" name="tamanio"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Ej1Persona" package="entidad" visibility="public" xPosition="20.0" yPosition="388.0">
+      <Fields>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="apellido" type="String" visibility="private"/>
+        <Field name="edad" type="Integer" visibility="private"/>
+        <Field name="DNI" type="Integer" visibility="private"/>
+        <Field name="perro" type="Ej1Perro" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="apellido"/>
+          <Argument type="Integer" name="edad"/>
+          <Argument type="Integer" name="DNI"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="setNombre" returnType="void" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="getApellido" returnType="String" visibility="public"/>
+        <Method name="setApellido" returnType="void" visibility="public">
+          <Argument type="String" name="apellido"/>
+        </Method>
+        <Method name="getEdad" returnType="Integer" visibility="public"/>
+        <Method name="setEdad" returnType="void" visibility="public">
+          <Argument type="Integer" name="edad"/>
+        </Method>
+        <Method name="getDNI" returnType="Integer" visibility="public"/>
+        <Method name="setDNI" returnType="void" visibility="public">
+          <Argument type="Integer" name="DNI"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="obj"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Ej1Main" package="main" visibility="public" xPosition="727.0" yPosition="66.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Ej1Servicio" package="servicio" visibility="public" xPosition="741.0" yPosition="274.0">
+      <Fields>
+        <Field name="leer" type="Scanner" visibility="package"/>
+        <Field name="listaPersona" type="ArrayList&lt;Ej1Persona&gt;" visibility="package"/>
+        <Field name="c" type="int" visibility="package"/>
+        <Field name="listaPerro" type="ArrayList&lt;Ej1Perro&gt;" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="crearPersona" returnType="Ej1Persona" visibility="private"/>
+        <Method name="sumarPersona" returnType="void" visibility="public"/>
+        <Method name="mostrarPersona" returnType="void" visibility="public"/>
+        <Method name="crearPerro" returnType="Ej1Perro" visibility="private"/>
+        <Method name="sumarPerro" returnType="void" visibility="public"/>
+        <Method name="mostrarPerro" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Enum name="Raza" package="enumeracion" visibility="public" xPosition="507.0" yPosition="-11.0">
+      <Literals>
+        <Literal name="BOXER"/>
+        <Literal name="CANICHE"/>
+        <Literal name="DOGO"/>
+        <Literal name="PITBUL"/>
+      </Literals>
+    </Enum>
+    <Enum name="Tamanio" package="enumeracion" visibility="public" xPosition="507.0" yPosition="145.0">
+      <Literals>
+        <Literal name="GRANDE"/>
+        <Literal name="MEDIANO"/>
+        <Literal name="CHICO"/>
+      </Literals>
+    </Enum>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation source="servicio.Ej1Servicio" target="entidad.Ej1Perro" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="entidad.Ej1Perro" target="enumeracion.Raza" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="listaPersona" source="servicio.Ej1Servicio" target="entidad.Ej1Persona" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Ej1Persona&gt;"/>
+    <HasRelation name="perro" source="entidad.Ej1Persona" target="entidad.Ej1Perro" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="entidad.Ej1Perro" target="enumeracion.Tamanio" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="raza" source="entidad.Ej1Perro" target="enumeracion.Raza" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="listaPerro" source="servicio.Ej1Servicio" target="entidad.Ej1Perro" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Ej1Perro&gt;"/>
+    <HasRelation name="tamanio" source="entidad.Ej1Perro" target="enumeracion.Tamanio" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="servicio.Ej1Servicio" target="entidad.Ej1Persona" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
